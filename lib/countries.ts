@@ -1,0 +1,43 @@
+import type { Country } from "@/lib/types";
+
+const API_BASE = "https://restcountries.com/v3.1";
+
+/** `/all` accepts at most 10 fields (API returns 400 otherwise). */
+const FIELDS_ALL = [
+  "cca3",
+  "name",
+  "flags",
+  "population",
+  "region",
+  "subregion",
+  "capital",
+  "tld",
+  "currencies",
+  "languages",
+].join(",");
+
+const FIELDS_ALPHA = `${FIELDS_ALL},borders`;
+
+export async function getAllCountries(): Promise<Country[]> {
+  const res = await fetch(`${API_BASE}/all?fields=${FIELDS_ALL}`, {
+    next: { revalidate: 86400 },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch countries: ${res.status}`);
+  }
+
+  return res.json() as Promise<Country[]>;
+}
+
+export async function getCountryByCode(code: string): Promise<Country> {
+  const res = await fetch(`${API_BASE}/alpha/${code}?fields=${FIELDS_ALPHA}`, {
+    next: { revalidate: 86400 },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch country ${code}: ${res.status}`);
+  }
+
+  return res.json() as Promise<Country>;
+}
