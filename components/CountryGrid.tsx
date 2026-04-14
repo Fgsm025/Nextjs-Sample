@@ -17,7 +17,7 @@ export const CountryGrid = ({
   }
 
   return (
-    <div className='grid justify-between gap-6 [grid-template-columns:repeat(auto-fit,minmax(286px,286px))]'>
+    <div className='grid justify-center gap-6 xl:justify-start [grid-template-columns:repeat(auto-fit,minmax(286px,286px))]'>
       {countries.map((country) => (
         <CountryCard key={country.cca3} country={country} />
       ))}

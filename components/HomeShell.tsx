@@ -21,6 +21,7 @@ export const HomeShell = ({ countries }: HomeShellProps): React.JSX.Element => {
     setSelectedRegion(region)
   }, [])
 
+  // Apply search and region filters on the client side for instant updates.
   const filtered = useMemo<Country[]>(() => {
     const query = searchQuery.toLowerCase().trim()
 
@@ -34,7 +35,7 @@ export const HomeShell = ({ countries }: HomeShellProps): React.JSX.Element => {
 
   return (
     <div className='flex min-h-screen flex-col bg-light-background font-sans text-base text-light-text antialiased dark:bg-dark-secondary dark:text-white'>
-      <main className='w-full flex-1 px-4 py-6 md:px-8 md:py-10 xl:px-[128px]'>
+      <main className='w-full flex-1 p-6 md:px-8 md:py-10 xl:px-[128px]'>
         <CountryToolbar
           searchQuery={searchQuery}
           onSearchChange={handleSearchChange}

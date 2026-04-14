@@ -26,6 +26,7 @@ const FIELDS_ALPHA = [
 ].join(',')
 
 export async function getAllCountries(): Promise<Country[]> {
+  // Fetch only the homepage fields to keep payloads small.
   const res = await fetch(`${API_BASE}/all?fields=${FIELDS_ALL}`, {
     next: { revalidate: 86400 },
   })
@@ -38,6 +39,7 @@ export async function getAllCountries(): Promise<Country[]> {
 }
 
 export async function getCountryByCode(code: string): Promise<Country> {
+  // Fetch full detail fields for a specific country page.
   const res = await fetch(`${API_BASE}/alpha/${code}?fields=${FIELDS_ALPHA}`, {
     next: { revalidate: 86400 },
   })

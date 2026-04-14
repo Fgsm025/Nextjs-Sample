@@ -12,7 +12,7 @@ export const CountryCard = ({ country }: CountryCardProps): React.JSX.Element =>
   return (
     <Link
       href={`/country/${country.cca3}`}
-      className="group flex w-full flex-col overflow-hidden rounded-[4px] bg-light-elements shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg dark:bg-dark-primary"
+      className="group flex w-full flex-col overflow-hidden rounded-[4px] bg-light-elements shadow-[0_4px_20px_0_hsla(0,0%,0%,0.1)] transition-transform hover:-translate-y-1 dark:bg-dark-primary"
     >
       <div className="relative h-[192px] w-full overflow-hidden">
         <Image

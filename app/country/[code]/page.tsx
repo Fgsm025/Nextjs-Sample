@@ -36,17 +36,16 @@ const CountryDetailPage = async ({
 
   return (
     <div className='min-h-screen bg-light-background dark:bg-dark-secondary'>
-      <main className='mx-auto w-full max-w-7xl px-4 pb-10 md:px-8 xl:px-[128px]'>
-        <div className='h-[32px]' />
+      <main className='w-full px-6 py-8 md:px-8 xl:px-[112px]'>
         <Link
           href='/'
-          className='inline-flex h-[43px] w-[100px] items-center gap-[6px] rounded-[4px] bg-light-elements px-[20px] py-[12px] text-[16px] font-normal leading-[100%] text-light-text shadow-[0_0_8px_0_hsla(0,0%,0%,0.25)] dark:bg-dark-primary dark:text-white'
+          className='inline-flex h-[43px] w-[100px] items-center gap-[6px] rounded-[4px] bg-light-elements px-[20px] py-[12px] text-[12px] font-normal leading-[100%] text-light-text shadow-[0_0_8px_0_hsla(0,0%,0%,0.25)] dark:bg-dark-primary dark:text-white md:text-[16px]'
         >
           <span aria-hidden>&larr;</span> Back
         </Link>
 
-        <section className='mt-10 grid gap-12 lg:grid-cols-[640px_1fr] lg:items-center lg:gap-x-[80px]'>
-          <div className='relative h-[455px] w-full max-w-[640px] overflow-hidden'>
+        <section className='mt-10 grid gap-10 lg:grid-cols-[640px_1fr] lg:items-center lg:gap-x-[80px] lg:gap-y-12'>
+          <div className='relative h-[232px] w-full max-w-[640px] overflow-hidden lg:h-[455px]'>
             <Image
               src={country.flags.svg}
               alt={country.flags.alt ?? `Flag of ${country.name.common}`}
@@ -57,13 +56,13 @@ const CountryDetailPage = async ({
             />
           </div>
 
-          <div className='w-full max-w-[560px] lg:h-[288px]'>
-            <h1 className='mb-10 text-[40px] font-bold leading-[100%] text-light-text dark:text-white'>
+          <div className='w-full max-w-[560px] lg:flex lg:h-[455px] lg:flex-col lg:justify-center'>
+            <h1 className='mb-6 text-[24px] font-bold leading-[100%] text-light-text dark:text-white md:text-[40px] lg:mb-10'>
               {country.name.common}
             </h1>
 
-            <div className='grid gap-8 md:grid-cols-2'>
-              <div className='flex flex-col gap-3 text-light-text dark:text-white/90'>
+            <div className='grid gap-0 md:grid-cols-2 md:gap-8'>
+              <div className='mb-10 flex flex-col gap-3 text-light-text dark:text-white/90 md:mb-0'>
                 <p>
                   <span className='text-[14px] font-semibold leading-[100%]'>
                     Native Name:
@@ -106,7 +105,7 @@ const CountryDetailPage = async ({
                 </p>
               </div>
 
-              <div className='flex flex-col gap-3 text-light-text dark:text-white/90'>
+              <div className='mb-10 flex flex-col gap-3 text-light-text dark:text-white/90 md:mb-0'>
                 <p>
                   <span className='text-[14px] font-semibold leading-[100%]'>
                     Top Level Domain:
@@ -134,7 +133,7 @@ const CountryDetailPage = async ({
               </div>
             </div>
 
-            <div className='mt-10 flex flex-col items-start gap-3'>
+            <div className='mt-0 flex flex-col items-start gap-3 md:mt-10'>
               <span className='text-[16px] font-medium leading-[100%] text-light-text dark:text-white'>
                 Border Countries:
               </span>
