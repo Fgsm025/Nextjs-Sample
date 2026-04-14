@@ -3,7 +3,7 @@
 import { useCallback, useMemo, useState } from 'react'
 import { CountryToolbar, type RegionFilter } from '@/components/CountryToolbar'
 import { CountryGrid } from '@/components/CountryGrid'
-import type { Country } from '@/lib/types'
+import type { Country } from '@/lib/types/country'
 
 interface HomeShellProps {
   readonly countries: Country[]

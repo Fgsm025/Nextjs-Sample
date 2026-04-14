@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Country } from "@/lib/types";
+import type { Country } from "@/lib/types/country";
 
 interface CountryCardProps {
   readonly country: Country;

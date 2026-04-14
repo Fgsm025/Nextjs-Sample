@@ -1,4 +1,4 @@
-import type { Country } from '@/lib/types'
+import type { Country } from '@/lib/types/country'
 
 const API_BASE = 'https://restcountries.com/v3.1'
 
@@ -28,6 +28,7 @@ const FIELDS_ALPHA = [
 export async function getAllCountries(): Promise<Country[]> {
   // Fetch only the homepage fields to keep payloads small.
   const res = await fetch(`${API_BASE}/all?fields=${FIELDS_ALL}`, {
+  // 24hrs cache
     next: { revalidate: 86400 },
   })
 

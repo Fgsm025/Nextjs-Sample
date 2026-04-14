@@ -1,5 +1,5 @@
 import { CountryCard } from '@/components/CountryCard'
-import type { Country } from '@/lib/types'
+import type { Country } from '@/lib/types/country'
 
 interface CountryGridProps {
   readonly countries: Country[]

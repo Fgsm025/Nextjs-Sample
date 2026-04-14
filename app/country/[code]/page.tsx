@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getCountryByCode } from '@/lib/countries'
+import { getCountryByCode } from '@/lib/api/countries'
 
 interface CountryDetailPageProps {
   readonly params: Promise<{ code: string }>
