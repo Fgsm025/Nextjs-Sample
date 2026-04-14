@@ -29,14 +29,14 @@ export const SiteHeader = (): React.JSX.Element => {
 
   return (
     <header className="border-b border-black/5 bg-light-elements shadow-sm dark:border-white/10 dark:bg-dark-primary dark:shadow-none">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 md:px-8 xl:px-[128px]">
-        <p className="text-base font-extrabold text-light-text dark:text-white md:text-xl">
+      <div className="flex h-[100px] items-center px-4 md:px-8 xl:px-[128px]">
+        <p className="text-[20px] font-semibold text-light-text dark:text-white">
           Where in the world?
         </p>
         <button
           type="button"
           onClick={handleToggleTheme}
-          className="flex items-center gap-2 text-sm font-semibold text-light-text dark:text-white md:text-base"
+          className="ml-auto flex items-center gap-2 text-sm font-semibold text-light-text dark:text-white md:text-base"
           aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
         >
           {isDark ? (

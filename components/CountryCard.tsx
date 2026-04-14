@@ -12,9 +12,9 @@ export const CountryCard = ({ country }: CountryCardProps): React.JSX.Element =>
   return (
     <Link
       href={`/country/${country.cca3}`}
-      className="group overflow-hidden rounded-[4px] bg-light-elements shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg dark:bg-dark-primary"
+      className="group flex w-full flex-col overflow-hidden rounded-[4px] bg-light-elements shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg dark:bg-dark-primary"
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden">
+      <div className="relative h-[192px] w-full overflow-hidden">
         <Image
           src={country.flags.svg}
           alt={country.flags.alt ?? `Flag of ${country.name.common}`}
@@ -24,20 +24,24 @@ export const CountryCard = ({ country }: CountryCardProps): React.JSX.Element =>
         />
       </div>
 
-      <div className="px-6 py-6">
-        <h2 className="mb-3 text-lg font-extrabold text-light-text dark:text-white">
+      <div className="h-[183px] px-6 py-8">
+        <h2 className="mb-4 text-[18px] font-bold leading-[100%] text-light-text dark:text-white">
           {country.name.common}
         </h2>
-        <p className="text-sm text-light-text dark:text-white/90">
-          <span className="font-semibold">Population:</span>{" "}
-          {country.population.toLocaleString()}
-        </p>
-        <p className="text-sm text-light-text dark:text-white/90">
-          <span className="font-semibold">Region:</span> {country.region}
-        </p>
-        <p className="text-sm text-light-text dark:text-white/90">
-          <span className="font-semibold">Capital:</span> {capital}
-        </p>
+        <div className="flex flex-col gap-3">
+          <p className="text-[16px] font-normal leading-[100%] text-light-text dark:text-white/90">
+            <span className="text-[16px] font-semibold leading-[100%]">Population:</span>{" "}
+            {country.population.toLocaleString()}
+          </p>
+          <p className="text-[16px] font-normal leading-[100%] text-light-text dark:text-white/90">
+            <span className="text-[16px] font-semibold leading-[100%]">Region:</span>{" "}
+            {country.region}
+          </p>
+          <p className="text-[16px] font-normal leading-[100%] text-light-text dark:text-white/90">
+            <span className="text-[16px] font-semibold leading-[100%]">Capital:</span>{" "}
+            {capital}
+          </p>
+        </div>
       </div>
     </Link>
   );

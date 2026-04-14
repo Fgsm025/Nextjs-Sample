@@ -87,11 +87,11 @@ export const CountryToolbar = ({
           value={searchQuery}
           onChange={handleSearchInput}
           placeholder="Search for a country..."
-          className="w-full rounded-md border-0 bg-light-elements py-3.5 pl-12 pr-4 text-sm text-light-text shadow-md placeholder:text-light-input focus:outline-none focus:ring-2 focus:ring-light-text/20 dark:bg-dark-primary dark:text-white dark:placeholder:text-white/60 dark:focus:ring-white/20 md:text-base"
+          className="w-full rounded-md border-0 bg-light-elements py-3.5 pl-12 pr-4 text-sm text-light-text shadow-[0_0_8px_0_hsla(0,0%,0%,0.15)] placeholder:text-light-input focus:outline-none focus:ring-2 focus:ring-light-text/20 dark:bg-dark-primary dark:text-white dark:placeholder:text-white/60 dark:focus:ring-white/20 md:text-base"
         />
       </label>
 
-      <div ref={containerRef} className="relative w-full shrink-0 md:w-52">
+      <div ref={containerRef} className="relative w-[262px] shrink-0 md:w-52">
         <button
           type="button"
           id={`${listboxId}-trigger`}
@@ -99,7 +99,7 @@ export const CountryToolbar = ({
           aria-expanded={menuOpen}
           aria-controls={listboxId}
           onClick={handleToggleMenu}
-          className="flex w-full items-center justify-between gap-2 rounded-md border-0 bg-light-elements px-4 py-3.5 text-left text-sm font-normal text-light-text shadow-md dark:bg-dark-primary dark:text-white md:text-base"
+          className="flex w-full items-center justify-between gap-2 rounded-md border-0 bg-light-elements px-4 py-3.5 text-left text-sm font-normal text-light-text shadow-[0_0_8px_0_hsla(0,0%,0%,0.15)] dark:bg-dark-primary dark:text-white md:text-base"
         >
           <span className="truncate">{triggerLabel}</span>
           <FiChevronDown
