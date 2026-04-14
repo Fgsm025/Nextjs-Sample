@@ -76,7 +76,7 @@ export const CountryToolbar = ({
 
   return (
     <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-      <label className="relative block w-full md:max-w-md xl:max-w-sm">
+      <label className="relative block w-full max-w-[419px]">
         <span className="sr-only">Search for a country</span>
         <FiSearch
           className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-light-input dark:text-white/70"
@@ -87,11 +87,11 @@ export const CountryToolbar = ({
           value={searchQuery}
           onChange={handleSearchInput}
           placeholder="Search for a country..."
-          className="w-full rounded-md border-0 bg-light-elements py-3.5 pl-12 pr-4 text-sm text-light-text shadow-[0_0_8px_0_hsla(0,0%,0%,0.15)] placeholder:text-light-input focus:outline-none focus:ring-2 focus:ring-light-text/20 dark:bg-dark-primary dark:text-white dark:placeholder:text-white/60 dark:focus:ring-white/20 md:text-base"
+          className="h-[52px] w-full rounded-md border-0 bg-light-elements pl-12 pr-4 text-sm text-light-text shadow-[0_0_8px_0_hsla(0,0%,0%,0.15)] placeholder:text-light-input focus:outline-none focus:ring-2 focus:ring-light-text/20 dark:bg-dark-primary dark:text-white dark:placeholder:text-white/60 dark:focus:ring-white/20 md:text-base"
         />
       </label>
 
-      <div ref={containerRef} className="relative w-[262px] shrink-0 md:w-52">
+      <div ref={containerRef} className="relative h-[56px] w-[262px] shrink-0">
         <button
           type="button"
           id={`${listboxId}-trigger`}
@@ -99,11 +99,11 @@ export const CountryToolbar = ({
           aria-expanded={menuOpen}
           aria-controls={listboxId}
           onClick={handleToggleMenu}
-          className="flex w-full items-center justify-between gap-2 rounded-md border-0 bg-light-elements px-4 py-3.5 text-left text-sm font-normal text-light-text shadow-[0_0_8px_0_hsla(0,0%,0%,0.15)] dark:bg-dark-primary dark:text-white md:text-base"
+          className="flex h-[56px] w-full items-center justify-between gap-2 rounded-md border-0 bg-light-elements px-4 text-left text-sm font-normal text-light-text shadow-[0_0_8px_0_hsla(0,0%,0%,0.15)] dark:bg-dark-primary dark:text-white md:text-base"
         >
           <span className="truncate">{triggerLabel}</span>
           <FiChevronDown
-            className={`h-5 w-5 shrink-0 text-light-input transition-transform dark:text-white/70 ${menuOpen ? "rotate-180" : ""}`}
+            className={`h-5 w-5 shrink-0 text-light-input transition-transform [stroke-width:2.5] dark:text-white/70 ${menuOpen ? "rotate-180" : ""}`}
             aria-hidden
           />
         </button>
