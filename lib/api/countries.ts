@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import type { Country } from '@/lib/types/country'
 
 const API_BASE = 'https://restcountries.com/v3.1'
@@ -39,11 +40,15 @@ export async function getAllCountries(): Promise<Country[]> {
   return res.json() as Promise<Country[]>
 }
 
-export async function getCountryByCode(code: string): Promise<Country> {
+async function fetchCountryByCode(code: string): Promise<Country | null> {
   // Fetch full detail fields for a specific country page.
   const res = await fetch(`${API_BASE}/alpha/${code}?fields=${FIELDS_ALPHA}`, {
     next: { revalidate: 86400 },
   })
+
+  if (res.status === 404) {
+    return null
+  }
 
   if (!res.ok) {
     throw new Error(`Failed to fetch country ${code}: ${res.status}`)
@@ -51,3 +56,6 @@ export async function getCountryByCode(code: string): Promise<Country> {
 
   return res.json() as Promise<Country>
 }
+
+// Dedupes in-flight work per request (e.g. generateMetadata + page share one fetch).
+export const getCountryByCode = cache(fetchCountryByCode)

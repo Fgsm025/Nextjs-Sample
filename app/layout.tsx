@@ -7,7 +7,7 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
 })
-
+// Page title
 export const metadata: Metadata = {
   title: 'Where in the world?',
 }

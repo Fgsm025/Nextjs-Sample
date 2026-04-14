@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -7,18 +8,37 @@ interface CountryDetailPageProps {
   readonly params: Promise<{ code: string }>
 }
 
+export const generateMetadata = async ({
+  params,
+}: CountryDetailPageProps): Promise<Metadata> => {
+  const { code } = await params
+  const country = await getCountryByCode(code)
+
+  if (!country) {
+    return {}
+  }
+
+  const capital = country.capital?.[0] ?? 'N/A'
+  const description = `Population ${country.population.toLocaleString()}. Capital: ${capital}. Region: ${country.region}.`
+
+  return {
+    title: `${country.name.common} | Where in the world?`,
+    description,
+  }
+}
+
 const CountryDetailPage = async ({
   params,
 }: CountryDetailPageProps): Promise<React.JSX.Element> => {
   const { code } = await params
 
-  let country
-  try {
-    country = await getCountryByCode(code)
-  } catch {
+  const country = await getCountryByCode(code)
+
+  if (!country) {
     notFound()
   }
 
+  // Prepare data before rendering
   const nativeName =
     country.name.nativeName && Object.values(country.name.nativeName)[0]?.common
       ? Object.values(country.name.nativeName)[0].common
