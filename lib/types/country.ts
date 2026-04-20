@@ -1,6 +1,3 @@
-// TypeScript interfaces for REST Countries API
-// Use these types throughout your application for proper type safety
-
 export interface CountryName {
   common: string;
   official: string;
@@ -20,80 +17,33 @@ export interface CountryFlags {
 
 export interface CountryCurrency {
   name: string;
-  symbol: string;
 }
 
 export interface CountryLanguage {
   [key: string]: string;
 }
 
-export interface Country {
-  name: CountryName;
-  tld?: string[];
-  cca2: string;
-  ccn3?: string;
-  cca3: string;
-  independent?: boolean;
-  status: string;
-  unMember: boolean;
-  currencies?: {
-    [key: string]: CountryCurrency;
-  };
-  capital?: string[];
-  region: string;
-  subregion?: string;
-  languages?: CountryLanguage;
-  translations?: {
-    [key: string]: {
-      official: string;
-      common: string;
-    };
-  };
-  latlng: [number, number];
-  landlocked: boolean;
-  borders?: string[];
-  area: number;
-  demonyms?: {
-    [key: string]: {
-      f: string;
-      m: string;
-    };
-  };
-  flag: string;
-  maps: {
-    googleMaps: string;
-    openStreetMaps: string;
-  };
-  population: number;
-  fifa?: string;
-  car: {
-    signs: string[];
-    side: string;
-  };
-  timezones: string[];
-  continents: string[];
-  flags: CountryFlags;
-  coatOfArms: {
-    png?: string;
-    svg?: string;
-  };
-  startOfWeek: string;
-  capitalInfo: {
-    latlng?: [number, number];
-  };
-  postalCode?: {
-    format: string;
-    regex: string;
-  };
-}
-
 export interface CountryListItem {
   name: CountryName;
+  cca3: string;
   flags: CountryFlags;
   population: number;
   region: string;
   capital?: string[];
+}
+
+export interface CountryDetail {
+  name: CountryName;
   cca3: string;
+  flags: CountryFlags;
+  population: number;
+  region: string;
+  subregion?: string;
+  capital?: string[];
+  tld?: string[];
+  currencies?: Record<string, CountryCurrency>;
+  languages?: CountryLanguage;
+  borders?: string[];
 }
 
 export interface CountryFilters {

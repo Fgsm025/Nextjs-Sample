@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getCountryByCode } from '@/lib/api/countries'
+import { getBorderCountryNames, getCountryByCode } from '@/lib/api/countries'
 
 interface CountryDetailPageProps {
   readonly params: Promise<{ code: string }>
@@ -53,6 +53,7 @@ const CountryDetailPage = async ({
     ? Object.values(country.languages as Record<string, string>).join(', ')
     : 'N/A'
   const borderCountries = country.borders ?? []
+  const borderCountryNames = await getBorderCountryNames(borderCountries)
 
   return (
     <div className='min-h-screen bg-light-background dark:bg-dark-secondary'>
@@ -165,7 +166,7 @@ const CountryDetailPage = async ({
                       href={`/country/${borderCode}`}
                       className='rounded-sm bg-light-elements px-4 py-[6px] text-[12px] font-normal leading-[100%] text-light-text shadow-[0_0_8px_0_hsla(0,0%,0%,0.25)] dark:bg-dark-primary dark:text-white'
                     >
-                      {borderCode}
+                      {borderCountryNames[borderCode] ?? borderCode}
                     </Link>
                   ))}
                 </div>

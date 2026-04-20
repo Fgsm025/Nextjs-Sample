@@ -3,10 +3,10 @@
 import { useCallback, useMemo, useState } from 'react'
 import { CountryToolbar, type RegionFilter } from '@/components/CountryToolbar'
 import { CountryGrid } from '@/components/CountryGrid'
-import type { Country } from '@/lib/types/country'
+import type { CountryListItem } from '@/lib/types/country'
 
 interface HomeShellProps {
-  readonly countries: Country[]
+  readonly countries: CountryListItem[]
 }
 
 export const HomeShell = ({ countries }: HomeShellProps): React.JSX.Element => {
@@ -22,7 +22,7 @@ export const HomeShell = ({ countries }: HomeShellProps): React.JSX.Element => {
   }, [])
 
   // Apply search and region filters on the client side for instant updates.
-  const filtered = useMemo<Country[]>(() => {
+  const filtered = useMemo<CountryListItem[]>(() => {
     const query = searchQuery.toLowerCase().trim()
 
     return countries.filter((c) => {

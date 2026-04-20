@@ -29,4 +29,14 @@ describe("CountryToolbar", () => {
 
     expect(input).toHaveValue("can");
   });
+
+  it("shows America label and selects it", async () => {
+    const user = userEvent.setup();
+    render(<ToolbarHarness />);
+
+    await user.click(screen.getByRole("button", { name: "Filter by Region" }));
+    await user.click(screen.getByRole("option", { name: "America" }));
+
+    expect(screen.getByRole("button", { name: "America" })).toBeInTheDocument();
+  });
 });

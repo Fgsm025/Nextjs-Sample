@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Country } from "@/lib/types/country";
+import type { CountryListItem } from "@/lib/types/country";
 
 interface CountryCardProps {
-  readonly country: Country;
+  readonly country: CountryListItem;
 }
 
 export const CountryCard = ({ country }: CountryCardProps): React.JSX.Element => {

@@ -10,9 +10,15 @@ import {
 } from "react";
 import { FiChevronDown, FiSearch } from "react-icons/fi";
 
-const REGIONS = ["Africa", "America", "Asia", "Europe", "Oceania"] as const;
+const REGION_OPTIONS = [
+  { label: "Africa", value: "Africa" },
+  { label: "America", value: "Americas" },
+  { label: "Asia", value: "Asia" },
+  { label: "Europe", value: "Europe" },
+  { label: "Oceania", value: "Oceania" },
+] as const;
 
-export type RegionFilter = (typeof REGIONS)[number] | "";
+export type RegionFilter = (typeof REGION_OPTIONS)[number]["value"] | "";
 
 interface CountryToolbarProps {
   readonly searchQuery: string;
@@ -72,10 +78,13 @@ export const CountryToolbar = ({
   );
 
   const triggerLabel =
-    selectedRegion === "" ? "Filter by Region" : selectedRegion;
+    selectedRegion === ""
+      ? "Filter by Region"
+      : REGION_OPTIONS.find((region) => region.value === selectedRegion)?.label ??
+        selectedRegion;
 
   return (
-    <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+    <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
       <label className="relative block w-full max-w-[419px]">
         <span className="sr-only">Search for a country</span>
         <FiSearch
@@ -124,16 +133,16 @@ export const CountryToolbar = ({
             >
               All regions
             </button>
-            {REGIONS.map((region) => (
+            {REGION_OPTIONS.map((region) => (
               <button
-                key={region}
+                key={region.value}
                 type="button"
                 role="option"
-                aria-selected={selectedRegion === region}
+                aria-selected={selectedRegion === region.value}
                 className="w-full px-4 py-2 text-left text-light-text hover:bg-light-background focus:bg-light-background focus:outline-none dark:text-white dark:hover:bg-dark-secondary dark:focus:bg-dark-secondary"
-                onClick={() => handleSelectRegion(region)}
+                onClick={() => handleSelectRegion(region.value)}
               >
-                {region}
+                {region.label}
               </button>
             ))}
           </div>

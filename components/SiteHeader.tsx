@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
 
 type Theme = "light" | "dark";
+const THEME_STORAGE_KEY = "theme";
 
 const applyTheme = (next: Theme): void => {
   const root = document.documentElement;
@@ -18,7 +19,19 @@ export const SiteHeader = (): React.JSX.Element => {
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
+    const storedTheme = globalThis.localStorage.getItem(THEME_STORAGE_KEY);
+    if (storedTheme === "light" || storedTheme === "dark") {
+      setTheme(storedTheme);
+      return;
+    }
+
+    const prefersDark = globalThis.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDark ? "dark" : "light");
+  }, []);
+
+  useEffect(() => {
     applyTheme(theme);
+    globalThis.localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme]);
 
   const handleToggleTheme = useCallback((): void => {
